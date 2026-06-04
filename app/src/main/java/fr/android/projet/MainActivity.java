@@ -51,6 +51,24 @@ public class MainActivity extends AppCompatActivity
                     .commit();
             navigationView.setCheckedItem(R.id.nav_map);
         }
+
+        if (savedInstanceState == null) {
+            boolean isLandscape = (findViewById(R.id.fragment_container_side) != null);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new MapFragment())
+                    .commit();
+
+            if (isLandscape) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container_side, new ListFragment())
+                        .commit();
+            }
+
+            navigationView.setCheckedItem(R.id.nav_map);
+        }
     }
 
     /**
