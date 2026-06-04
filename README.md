@@ -2,10 +2,16 @@
 Une app qui permet de créer des souvenirs géolocalisés avec photos, notes et catégories, synchronisés avec une base de données distante.  
 
 ## Ergnomic interface (use menus like toolbars and navigation drawers, ...), adapt the interface to landscape, portrait, french and english
-In progress
+On remplace le ActionBar par defaut par un Toolbar personnalisé pour pouvoir y ajouter un menu d'options et on la fais se comporter comme une ActionBar classique avec setSupportActionBar.  
+Dans le fichier de theme on active le NoActionBar pour ne pas avoir deux barres superposées.  
+Dans res/menu on met les listes des options du dwraner et des 3 points.  
+On ajoute le fichier strings.xml pour pouvoir faire du multilingue. (repertoire values pour le français et values-en pour l'anglais).  
+Le repertoire layout contient des versions différentes pour le portrait et le paysage. (layout-land pour le paysage).
 ## Be able to geolocate the app in real time + display it on a map (latitude, longitude and geocoding - transform these into a street name)
-In progress  
-Location manager avec OpenStreetMap
+Le Fragment est affiché lorsque le menu est selectionné, ce n'est pas une nouvelle activité qui charge sinon il faudrais rechargé le menu à chaque fois.  
+Il faut d'abord ajouter les permissions dans le Manifest pour pouvoir avoir accès au gps et à internet, ensuite demander la permission à l'exécution, puis s'abonner au LocationManager pour recevoir les mises à jour de position.  
+Les requete  API doivent se faire dans un thread séparé pour ne pas bloquer le thread principal, on peut utiliser un AsyncTask ou un ExecutorService pour ça.  
+Pour que le geocodage fonctionne, il faut ajouter la dependance osmdroid
 ## Take pictures and save them locally
 In progress
 ## Store/read data from an external database (for instance Mysql)

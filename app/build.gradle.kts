@@ -40,4 +40,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    // Carte OpenStreetMap — gratuit, sans clé API
+    implementation("org.osmdroid:osmdroid-android:6.1.17")
 }
