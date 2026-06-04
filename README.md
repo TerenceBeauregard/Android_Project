@@ -4,7 +4,8 @@ Une app qui permet de créer des souvenirs géolocalisés avec photos, notes et 
 ## Ergnomic interface (use menus like toolbars and navigation drawers, ...), adapt the interface to landscape, portrait, french and english
 In progress
 ## Be able to geolocate the app in real time + display it on a map (latitude, longitude and geocoding - transform these into a street name)
-In progress
+In progress  
+Location manager avec OpenStreetMap
 ## Take pictures and save them locally
 In progress
 ## Store/read data from an external database (for instance Mysql)
@@ -74,3 +75,6 @@ protected void onCreate(Bundle savedInstanceState) {
     // On charge le souvenir depuis SQLite avec cet id
 }
 ```
+### La différence entre layout et menu
+res/layout contient des interfaces visuelles complètes — des Views positionnées dans l'espace avec des coordonnées, des tailles, des marges, des couleurs. Android les dessine pixel par pixel sur l'écran.
+res/menu contient une liste d'actions déclaratives — tu dis juste "voici les items disponibles", sans dire où ils apparaissent, quelle taille ils font, ni comment ils s'affichent. C'est Android qui décide du rendu selon le contexte

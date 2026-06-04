@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Projet</string>
+    <!-- res/values/strings.xml -->
+    <string name="nav_header_subtitle">Vos souvenirs géolocalisés</string>
+
+    <!-- Menu Navigation Drawer -->
+    <string name="menu_map">Carte</string>
+    <string name="menu_list">Mes souvenirs</string>
+    <string name="menu_add">Ajouter un souvenir</string>
+    <string name="menu_stats">Statistiques</string>
+
+    <!-- Menu Toolbar -->
+    <string name="action_settings">Paramètres</string>
+    <string name="action_about">À propos</string>
+
+    <!-- Boutons courants -->
+    <string name="btn_save">Enregistrer</string>
+    <string name="btn_cancel">Annuler</string>
+    <string name="btn_delete">Supprimer</string>
+
+    <!-- Messages -->
+    <string name="gps_searching">Recherche du GPS…</string>
+    <string name="photo_taken">Photo enregistrée</string>
+    <string name="drawer_open">Ouvrir le menu</string>
+    <string name="drawer_close">Fermer le menu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
