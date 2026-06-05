@@ -23,6 +23,11 @@
     <string name="photo_taken">Photo enregistrée</string>
     <string name="drawer_open">Ouvrir le menu</string>
     <string name="drawer_close">Fermer le menu</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="btn_take_photo">Prendre une photo</string>
+    <string name="hint_titre">Titre du souvenir</string>
+    <string name="hint_description">Description</string>
+    <string name="photo_preview">Aperçu de la photo</string>
+    <string name="erreur_camera">Impossible d\'ouvrir la caméra</string>
+    <string name="hello_blank_fragment">hello</string>
 </resources>

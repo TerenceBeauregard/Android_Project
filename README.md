@@ -13,7 +13,8 @@ Il faut d'abord ajouter les permissions dans le Manifest pour pouvoir avoir acc�
 Les requete  API doivent se faire dans un thread séparé pour ne pas bloquer le thread principal, on peut utiliser un AsyncTask ou un ExecutorService pour ça.  
 Pour que le geocodage fonctionne, il faut ajouter la dependance osmdroid
 ## Take pictures and save them locally
-In progress
+On prend les photos et on les stock locallement dans le stockage interne de l'app. On utilise un Intent implicite pour ouvrir l'app caméra native, et on récupère le résultat dans onActivityResult.  
+Dans le critere 5 on stockera le chemin de la photo dans la base de données pour pouvoir la réafficher ensuite.
 ## Store/read data from an external database (for instance Mysql)
 In progress
 ## Store/read app data locally (in a sqlite database)

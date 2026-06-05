@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-files-path
+        name="photos"
+        path="Pictures/"/>
+    <!--Cela indique au FileProvider que les fichiers partagés se trouvent dans le dossier Pictures
+    du stockage privé de l'app.-->
+</paths>

@@ -19,4 +19,11 @@
     <string name="photo_taken">Photo saved</string>
     <string name="drawer_open">Open menu</string>
     <string name="drawer_close">Close menu</string>
+
+    <string name="btn_take_photo">Take a photo</string>
+    <string name="hint_titre">Memory title</string>
+    <string name="hint_description">Description</string>
+    <string name="photo_preview">Photo preview</string>
+    <string name="erreur_camera">Unable to open camera</string>
+    <string name="hello_blank_fragment">hello</string>
 </resources>
