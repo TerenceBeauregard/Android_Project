@@ -17,6 +17,19 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
+    private double lastLatitude = 0.0;
+    private double lastLongitude = 0.0;
+
+    private String lastAdresse = "";
+
+    public void setLastAdresse(String adresse) { lastAdresse = adresse; }
+    public String getLastAdresse() { return lastAdresse; }
+    public void setLastLocation(double lat, double lng) {
+        lastLatitude = lat;
+        lastLongitude = lng;
+    }
+    public double getLastLatitude() { return lastLatitude; }
+    public double getLastLongitude() { return lastLongitude; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

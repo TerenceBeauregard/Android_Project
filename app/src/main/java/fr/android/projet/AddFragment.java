@@ -175,9 +175,33 @@ public class AddFragment extends Fragment {
             return;
         }
 
-        // TODO : sauvegarder dans SQLite (critère 5)
         // On stocke : titre, description, chemin de la photo, date
         String cheminPhoto = photoFile.getAbsolutePath();
+
+        // Récupérer la dernière position GPS connue
+        double latitude = ((MainActivity) requireActivity()).getLastLatitude();
+        double longitude = ((MainActivity) requireActivity()).getLastLongitude();
+        String adresse = ((MainActivity) requireActivity()).getLastAdresse();
+
+        // Envoyer vers Supabase
+        SupabaseManager.insertSouvenir(
+                titre, description, latitude, longitude, adresse, cheminPhoto,
+                new SupabaseManager.SupabaseCallback() {
+                    @Override
+                    public void onSuccess(String result) {
+                        Toast.makeText(requireContext(),
+                                "Souvenir sauvegardé !", Toast.LENGTH_SHORT).show();
+
+                        // TODO critère 5 : sauvegarder aussi dans SQLite
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        Toast.makeText(requireContext(),
+                                "Erreur : " + error, Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
 
         Toast.makeText(requireContext(),
                 "Souvenir sauvegardé !", Toast.LENGTH_SHORT).show();

@@ -26,4 +26,6 @@
     <string name="photo_preview">Photo preview</string>
     <string name="erreur_camera">Unable to open camera</string>
     <string name="hello_blank_fragment">hello</string>
+
+    <string name="chargement">Loading…</string>
 </resources>

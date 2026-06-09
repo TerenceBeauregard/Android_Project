@@ -125,6 +125,8 @@ public class MapFragment extends Fragment implements LocationListener {
         double lat = location.getLatitude();
         double lng = location.getLongitude();
 
+        ((MainActivity) requireActivity()).setLastLocation(lat, lng);
+
         // Mettre à jour les TextViews
         tvLatitude.setText("Latitude : " + lat);
         tvLongitude.setText("Longitude : " + lng);
@@ -152,6 +154,8 @@ public class MapFragment extends Fragment implements LocationListener {
                 if (tvAdresse != null) {
                     tvAdresse.setText(adresse);
                 }
+                // Sauvegarder l'adresse dans MainActivity
+                ((MainActivity) requireActivity()).setLastAdresse(adresse);
             });
 
         }).start();

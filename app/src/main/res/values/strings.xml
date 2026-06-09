@@ -30,4 +30,6 @@
     <string name="photo_preview">Aperçu de la photo</string>
     <string name="erreur_camera">Impossible d\'ouvrir la caméra</string>
     <string name="hello_blank_fragment">hello</string>
+
+    <string name="chargement">Chargement…</string>
 </resources>
