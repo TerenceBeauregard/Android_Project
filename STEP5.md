@@ -153,3 +153,52 @@ on sait déjà qu'il n'y a pas de réseau.
 ---
 
 ## 4. Schéma de synchronisation
+
+Ouverture de Mes souvenirs
+│
+isConnecte() ?
+│
+┌─────┴─────┐
+Oui         Non
+│            │
+▼            ▼
+SQLite        SQLite
+sync=0 ?    getSouvenirs()
+│            │
+┌──┴──┐         ▼
+Oui   Non     Afficher
+│     │
+▼     ▼
+POST  GET Supabase
+Supabase   │
+│         ▼
+▼      Sync SQLite
+sync=1     │
+│         ▼
+▼      Afficher
+GET Supabase
+│
+▼
+Sync SQLite
+│
+▼
+Afficher
+
+---
+
+## 5. Responsabilités de chaque composant
+
+| Composant | Rôle |
+|---|---|
+| SharedPreferences | Stockage persistant des préférences utilisateur clé-valeur |
+| PreferencesManager | Centralise la lecture et l'écriture des SharedPreferences |
+| Locale + updateConfiguration | Applique la langue choisie aux ressources Android |
+| recreate() | Redémarre l'Activity pour recharger l'interface dans la nouvelle langue |
+| appliquerLangueSauvegardee() | Applique la langue avant setContentView au démarrage |
+| SQLiteOpenHelper | Gère la création et la mise à jour de la base de données locale |
+| DatabaseHelper | Expose les opérations CRUD sur la base SQLite locale |
+| Cursor | Parcourt les résultats d'une requête SQLite ligne par ligne |
+| Colonne sync | Indique si un souvenir a été synchronisé avec Supabase |
+| ConnectivityManager | Vérifie la disponibilité du réseau avant tout appel HTTP |
+| envoyerSouvenirstNonSync() | Envoie vers Supabase les souvenirs créés hors ligne |
+| syncDepuisSupabase() | Écrase SQLite avec les données Supabase pour maintenir la cohérence |
