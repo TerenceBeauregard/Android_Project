@@ -18,7 +18,27 @@ Dans le critere 5 on stockera le chemin de la photo dans la base de données pou
 ## Store/read data from an external database (for instance Mysql)
 In progress
 ## Store/read app data locally (in a sqlite database)
-In progress
+````    
+    Retour en ligne
+          │
+          ▼
+    SQLite non sync ?
+          │
+       ┌──┴──┐
+      Oui   Non
+       │     │
+    Envoyer  └──→ Charger Supabase
+    vers          → Sync SQLite
+    Supabase      → Afficher
+       │
+       ▼
+    Marquer sync=1
+       │
+       ▼
+  Charger Supabase
+  → Sync SQLite
+  → Afficher
+````
 
 ## Documentation
 ### Activity

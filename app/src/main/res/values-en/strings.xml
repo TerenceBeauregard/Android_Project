@@ -28,4 +28,10 @@
     <string name="hello_blank_fragment">hello</string>
 
     <string name="chargement">Loading…</string>
+
+    <string name="settings_language">Application language</string>
+    <string name="lang_french">French</string>
+    <string name="lang_english">English</string>
+    <string name="btn_apply">Apply</string>
+    <string name="menu_settings">Settings</string>
 </resources>

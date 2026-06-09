@@ -1,5 +1,6 @@
 package fr.android.projet;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Appliquer la langue sauvegardée AVANT setContentView
+        appliquerLangueSauvegardee();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -102,6 +108,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new AddFragment();
         } else if (id == R.id.nav_stats) {
             fragment = new StatsFragment();
+        } else if (id == R.id.nav_settings) {
+            fragment = new SettingsFragment();
         }
 
         if (fragment != null) {
@@ -147,5 +155,18 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void appliquerLangueSauvegardee() {
+        PreferencesManager prefsManager = new PreferencesManager(this);
+        String langue = prefsManager.getLangue();
+
+        Locale locale = new Locale(langue);
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 }

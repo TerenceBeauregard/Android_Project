@@ -182,23 +182,31 @@ public class AddFragment extends Fragment {
         double latitude = ((MainActivity) requireActivity()).getLastLatitude();
         double longitude = ((MainActivity) requireActivity()).getLastLongitude();
         String adresse = ((MainActivity) requireActivity()).getLastAdresse();
+        String date = new java.text.SimpleDateFormat(
+                "yyyy-MM-dd", java.util.Locale.getDefault()
+        ).format(new java.util.Date());
 
-        // Envoyer vers Supabase
-        SupabaseManager.insertSouvenir(
-                titre, description, latitude, longitude, adresse, cheminPhoto,
+        // 1. Sauvegarder dans SQLite immédiatement
+        DatabaseHelper db = new DatabaseHelper(requireContext());
+        db.insertSouvenir(titre, description, latitude, longitude,
+                adresse, cheminPhoto, date);
+
+        // 2. Tenter la synchronisation avec Supabase
+        SupabaseManager.insertSouvenir(titre, description, latitude,
+                longitude, adresse, cheminPhoto,
                 new SupabaseManager.SupabaseCallback() {
                     @Override
                     public void onSuccess(String result) {
                         Toast.makeText(requireContext(),
                                 "Souvenir sauvegardé !", Toast.LENGTH_SHORT).show();
-
-                        // TODO critère 5 : sauvegarder aussi dans SQLite
                     }
 
                     @Override
                     public void onError(String error) {
+                        // Sauvegardé en local même si Supabase échoue
                         Toast.makeText(requireContext(),
-                                "Erreur : " + error, Toast.LENGTH_LONG).show();
+                                "Sauvegardé localement (pas de réseau)",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
         );

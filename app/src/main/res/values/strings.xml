@@ -32,4 +32,10 @@
     <string name="hello_blank_fragment">hello</string>
 
     <string name="chargement">Chargement…</string>
+
+    <string name="settings_language">Langue de l\'application</string>
+    <string name="lang_french">Français</string>
+    <string name="lang_english">Anglais</string>
+    <string name="btn_apply">Appliquer</string>
+    <string name="menu_settings">Paramètres</string>
 </resources>
