@@ -153,37 +153,37 @@ on sait déjà qu'il n'y a pas de réseau.
 ---
 
 ## 4. Schéma de synchronisation
-
-Ouverture de Mes souvenirs  
-│  
-isConnecte() ?  
-│  
-┌─────┴─────┐  
-Oui         Non  
-│            │  
-▼            ▼  
-SQLite        SQLite  
-sync=0 ?    getSouvenirs()  
-│            │  
-┌──┴──┐         ▼  
-Oui   Non     Afficher  
-│     │  
-▼     ▼  
-POST  GET Supabase  
-Supabase   │  
-│         ▼  
-▼      Sync SQLite  
-sync=1     │  
-│         ▼  
-▼      Afficher  
-GET Supabase  
-│  
-▼  
-Sync SQLite  
-│  
-▼  
-Afficher  
-
+````
+  Ouverture de Mes souvenirs  
+          │  
+  isConnecte() ?  
+        │  
+  ┌─────┴─────┐  
+  Oui         Non  
+  │            │  
+  ▼            ▼  
+  SQLite        SQLite  
+  sync=0 ?    getSouvenirs()  
+     │            │  
+  ┌──┴──┐         ▼  
+  Oui   Non     Afficher  
+  │     │  
+  ▼     ▼  
+  POST  GET Supabase  
+  Supabase   │  
+  │          ▼  
+  ▼      Sync SQLite  
+  sync=1     │  
+  │          ▼  
+  ▼      Afficher  
+  GET Supabase  
+      │  
+      ▼  
+  Sync SQLite  
+      │  
+      ▼  
+   Afficher  
+````
 ---
 
 ## 5. Responsabilités de chaque composant
