@@ -82,24 +82,30 @@ protected void onCreate(Bundle savedInstanceState) {
 
 #### Intent implicite
 ```java
-// Dans ListActivity.java — au clic sur un souvenir
-public void ouvrirDetail(int idSouvenir) {
-    // Intent EXPLICITE : on nomme exactement la classe cible
-    Intent intent = new Intent(this, DetailActivity.class);
+// Dans AddActivity.java — au clic sur "Prendre une photo"
+public void lancerCamera() {
+    // Intent IMPLICITE : on décrit l'ACTION, pas la classe cible
+    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-    // On passe des données à l'Activity cible
-    intent.putExtra("SOUVENIR_ID", idSouvenir);
+    // On prépare le fichier où la photo sera sauvegardée
+    File photoFile = new File(getExternalFilesDir(null), "photo.jpg");
+    Uri photoUri = FileProvider.getUriForFile(this,
+            "com.monapp.fileprovider", photoFile);
 
-    startActivity(intent);
+    intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+
+    // Android cherche quelle app peut gérer ACTION_IMAGE_CAPTURE
+    // Si plusieurs apps peuvent le faire → Android affiche un sélecteur
+    startActivityForResult(intent, CODE_PHOTO);
 }
 
-// Dans DetailActivity.java — on récupère les données
+// Récupérer la photo quand l'app caméra a terminé
 @Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    int id = getIntent().getIntExtra("SOUVENIR_ID", -1);
-    // On charge le souvenir depuis SQLite avec cet id
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == CODE_PHOTO && resultCode == RESULT_OK) {
+        // La photo est sauvegardée dans photoFile
+        afficherMiniature();
+    }
 }
 ```
 ### La différence entre layout et menu
